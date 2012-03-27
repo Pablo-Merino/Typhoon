@@ -50,7 +50,7 @@ class HTTPd
 		rescue Exception => e
 			puts "Exception! #{e.backtrace}"
 			log = "#{Time.now.localtime.strftime("%Y/%m/%d %H:%M")} - #{@client.peeraddr[2]} - #{@request.gsub("\r\n","" )} - #{e.backtrace}\r\n"
-		  	File.open(@webRoot+"logs/error_log", 'a') {|f| f.write(log) }
+		  	File.open(@webRoot+"logs\\error_log", 'a') {|f| f.write(log) }
 
 			@client.puts "HTTP/1.1 404 Object Not Found\r\nServer: Typhoon\r\nContent-type: text/html\r\n\r\n#{File.open(File.expand_path(File.dirname(__FILE__))+"/assets/500.html", "rb").read}"
 			@client.close
@@ -74,9 +74,9 @@ class HTTPd
 
 		@fileName = @fileName.strip
 		unless @fileName == nil
-			@fileName = @webRoot+@publicPath+"/" + @fileName
+			@fileName = @webRoot+@publicPath+"\\" + @fileName
 		end
-		@fileName << "/index.html" if  File.directory?(@fileName)
+		@fileName << "\\index.html" if  File.directory?(@fileName)
 	end
 	def contentType(file)
 		return 'text/html' if File.extname(file) =~ /\.htm*[a-zA-Z]/
@@ -105,7 +105,7 @@ trap("INT") {
 
 def requestLogger(session, request)
 	log = "#{Time.now.localtime.strftime("%Y/%m/%d %H:%M:%S")} - #{session.peeraddr[2]} (#{session.peeraddr[3]}) - #{request}"
-  	File.open(@root+"logs/access_log", 'a') {|f| f.write(log) }
+  	File.open(@root+"logs\\access_log", 'a') {|f| f.write(log) }
 	puts log
 end
 

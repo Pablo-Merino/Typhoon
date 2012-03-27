@@ -1,4 +1,4 @@
-webRoot: "/Users/pablo/web/"
+webRoot: "C:\\Users\\pablo\\Workspace\\web\\"
 listenAddr: "0.0.0.0"
 listenPort: 9091
 publicHTMLDir: "public_html"
