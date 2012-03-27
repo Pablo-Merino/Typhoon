@@ -3,5 +3,5 @@ listenAddr: "0.0.0.0"
 listenPort: 9091
 publicHTMLDir: "public_html"
 #customHeaders: {
-#	X-HowDoesPabloFeelsNow: "Like a Sir"
+#	X-YourCustomHeader: "Awww Yeah!"
 #}
